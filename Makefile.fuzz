@@ -13,6 +13,10 @@ all: build
 build:
 	go-fuzz-build -tags fuzz github.com/miekg/dns
 
+.PHONY: build-newrr
+build-newrr:
+	go-fuzz-build -func FuzzNewRR -tags fuzz github.com/miekg/dns
+
 .PHONY: fuzz
 fuzz:
 	go-fuzz -bin=dns-fuzz.zip -workdir=fuzz
